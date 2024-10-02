@@ -31,7 +31,8 @@ class Util {
 	 * @param type $tagline
 	 */
 	public static function markup_tag( $tagline ) {
-		printf( "\n<!--%s - %s-->\n", \esc_html__( CS_RTAFAR_PLUGIN_NAME ), \esc_html__( $tagline ) );
+		// Translators: %s is the plugin name, %s is the tagline.
+		printf( "\n<!--%s - %s-->\n", esc_html( CS_RTAFAR_PLUGIN_NAME ), esc_html( $tagline ) );
 	}
 
 	/**
@@ -403,7 +404,7 @@ class Util {
 			),
 			'input'    => array(
 				'class'             => array(),
-				'type'              => array(),
+				'type'              => array( "checkbox"),
 				'required'          => array(),
 				'placeholder'       => array(),
 				'name'              => array(),

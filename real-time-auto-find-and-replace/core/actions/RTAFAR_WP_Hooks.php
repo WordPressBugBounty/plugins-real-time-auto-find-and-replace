@@ -192,7 +192,7 @@ class RTAFAR_WP_Hooks {
 		$ScreenOptions = new ScreenOptions();
 
 		if ( isset( $rtafr_menu['add_masking_rule'] ) && ! empty( $rtafr_menu['add_masking_rule'] ) ) {
-			// add_action( 'load-' . $rtafr_menu['add_masking_rule'], array( $ScreenOptions, 'rtafar_arr_screen_options' ) );
+			add_action( 'load-' . $rtafr_menu['add_masking_rule'], array( $ScreenOptions, 'rtafar_arr_screen_options' ) );
 		}
 
 		if ( isset( $rtafr_menu['all_masking_rules'] ) && ! empty( $rtafr_menu['all_masking_rules'] ) ) {
@@ -200,7 +200,7 @@ class RTAFAR_WP_Hooks {
 		}
 
 		if ( isset( $rtafr_menu['replace_in_db'] ) && ! empty( $rtafr_menu['replace_in_db'] ) ) {
-			// add_action( 'load-' . $rtafr_menu['replace_in_db'], array( $ScreenOptions, 'rtafar_screen_options_replace_in_db' ) );
+			add_action( 'load-' . $rtafr_menu['replace_in_db'], array( $ScreenOptions, 'rtafar_arr_screen_options' ) );
 		}
 	}
 

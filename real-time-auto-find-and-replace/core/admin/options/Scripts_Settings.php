@@ -83,7 +83,7 @@ class Scripts_Settings {
 				);
 		}
 
-		wp_enqueue_style( 'wapg', CS_RTAFAR_PLUGIN_ASSET_URI . 'css/rtafar-admin-style.min.css', false );
+		wp_enqueue_style( 'wapg', CS_RTAFAR_PLUGIN_ASSET_URI . 'css/rtafar-admin-style.min.css', array(), CS_RTAFAR_VERSION );
 
 		return;
 	}
