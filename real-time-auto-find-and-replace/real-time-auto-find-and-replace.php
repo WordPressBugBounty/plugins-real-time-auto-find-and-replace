@@ -4,7 +4,7 @@
  * Plugin Name:       Better Find and Replace
  * Plugin URI:        https://codesolz.net/our-products/wordpress-plugin/real-time-auto-find-and-replace/
  * Description:       The plugin has the capability to automatically search for specific words and replace them with your preferred words. You have the ability to create your own search and replace rules for real-time replacement. These rules will be applied before the page is displayed in the browser, as well as during any background interactions with other social plugins.
- * Version:           1.6.4
+ * Version:           1.6.5
  * Author:            CodeSolz
  * Author URI:        https://www.codesolz.net
  * License:           GPLv3
@@ -13,7 +13,7 @@
  * Text Domain:       real-time-auto-find-and-replace
  * Requires PHP: 7.0
  * Requires At Least: 4.0
- * Tested Up To: 6.6
+ * Tested Up To: 6.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -32,11 +32,16 @@ if ( ! class_exists( 'Real_Time_Auto_Find_And_Replace' ) ) {
 		private static $rtaafr_hooks = array();
 
 		/**
+		 * Hold hooks status
+		 */
+		static $hooks_loaded = false;
+
+		/**
 		 * Hold version
 		 *
 		 * @var String
 		 */
-		private static $version = '1.6.4';
+		private static $version = '1.6.5';
 
 		/**
 		 * Hold version
@@ -131,15 +136,35 @@ if ( ! class_exists( 'Real_Time_Auto_Find_And_Replace' ) ) {
 		 * @return classes
 		 */
 		private static function load_hooks() {
+			if ( self::$hooks_loaded ) {
+				return self::$rtaafr_hooks; // Avoid reloading
+			}
+
 			$namespace = self::$namespace . '\\actions\\';
-			foreach ( glob( CS_RTAFAR_HOOKS_DIR . '*.php' ) as $cs_action_file ) {
-				$class_name = basename( $cs_action_file, '.php' );
+			$hooks_dir = realpath( CS_RTAFAR_HOOKS_DIR );
+
+			if ( $hooks_dir === false || ! is_dir( $hooks_dir ) ) {
+				if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+					error_log( 'Invalid hooks directory: ' . CS_RTAFAR_HOOKS_DIR );
+				}
+				return array();
+			}
+
+			$iterator = new \DirectoryIterator( $hooks_dir );
+			foreach ( $iterator as $file ) {
+				if ( $file->isDot() || $file->isDir() || $file->getExtension() !== 'php' ) {
+					continue;
+				}
+
+				$class_name = basename( $file->getFilename(), '.php' );
 				$class      = $namespace . $class_name;
-				if ( class_exists( $class ) &&
-					! array_key_exists( $class, self::$rtaafr_hooks ) ) { // check class doesn't load multiple time.
+
+				if ( class_exists( $class ) && ! isset( self::$rtaafr_hooks[ $class ] ) ) {
 					self::$rtaafr_hooks[ $class ] = new $class();
 				}
 			}
+
+			self::$hooks_loaded = true; // Mark as loaded
 			return self::$rtaafr_hooks;
 		}
 

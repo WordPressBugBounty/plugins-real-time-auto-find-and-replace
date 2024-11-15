@@ -60,7 +60,7 @@ class RTAFAR_CustomAjax {
 				array(
 					'status' => false,
 					'title'  => __( 'Invalid Library', 'real-time-auto-find-and-replace' ),
-					// Translators: %s is the name of the class name with path.
+					/* Translators: %s is the name of the class name with path. */
 					'text'   => sprintf( __( 'Library Class "%s" not found! ', 'real-time-auto-find-and-replace' ), $class_path ),
 				)
 			);
@@ -71,7 +71,7 @@ class RTAFAR_CustomAjax {
 				array(
 					'status' => false,
 					'title'  => __( 'Invalid Method', 'real-time-auto-find-and-replace' ),
-					// Translators: %1$s is the method of class and %2$s is the class name with path.
+					/* Translators: %1$s is the method of class and %2$s is the class name with path. */
 					'text'   => sprintf( __( 'Method "%1$s" not found in Class "%2$s"! ', 'real-time-auto-find-and-replace' ), $method[1], $class_path ),
 				)
 			);
@@ -80,5 +80,4 @@ class RTAFAR_CustomAjax {
 		( new $class_path() )->{$method[1]}( $data );
 		exit;
 	}
-
 }
