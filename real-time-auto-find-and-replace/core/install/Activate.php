@@ -39,9 +39,13 @@ class Activate {
 				) $charset_collate",
 		);
 
+		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 		foreach ( $sqls as $sql ) {
-			if ( $wpdb->query( $sql ) === false ) {
-				continue;
+			dbDelta( $sql );
+
+			// Log any errors from dbDelta
+			if ( ! empty( $wpdb->last_error ) ) {
+				error_log( 'BFR DB installation error: ' . $wpdb->last_error );
 			}
 		}
 
@@ -57,15 +61,15 @@ class Activate {
 	 * @return void
 	 */
 	public static function check_db_status() {
+		global $wpdb;
 		$import_old_settings          = false;
 		$get_installed_db_version     = get_site_option( 'rtafar_db_version' );
 		$get_installed_plugin_version = get_site_option( 'rtafar_plugin_version' );
+
 		if ( empty( $get_installed_db_version ) ) {
 			self::on_activate();
 			$import_old_settings = true;
 		} elseif ( \version_compare( $get_installed_db_version, CS_RTAFAR_DB_VERSION, '!=' ) ) {
-
-			global $wpdb;
 
 			$update_sqls = array();
 
@@ -96,9 +100,13 @@ class Activate {
 
 			// update db
 			if ( ! empty( $update_sqls ) ) {
+				require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 				foreach ( $update_sqls as $sql ) {
-					if ( $wpdb->query( $sql ) === false ) {
-						continue;
+					dbDelta( $sql );
+
+					// Log any errors from dbDelta
+					if ( ! empty( $wpdb->last_error ) ) {
+						error_log( 'BFR DB update error: ' . $wpdb->last_error );
 					}
 				}
 			}
