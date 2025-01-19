@@ -4,7 +4,7 @@ Tags: database, search replace, search, replace, search and replace, real-time r
 Donate link: https://codesolz.net/our-products/wordpress-plugin/real-time-auto-find-and-replace/?utm_source=wordpress.org&utm_medium=README_DONATE_BTN
 Requires at least: 4.0
 Tested up to: 6.7
-Stable tag: 1.6.6
+Stable tag: 1.6.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,14 +13,19 @@ Easily Search and replace text, code blocks, URLs, footer credits, jQuery / Ajax
 == Description ==
 The plugin provides an optimized search and replace function, providing an effective solution for efficient database management. Additionally, it incorporates a dynamic real-time word / text replacing feature.
 
+Ideal for site migrations and bulk updates, it offers powerful tools to find and replace text, images, and media across your database. With features like case-sensitive search, serialized data support, table-specific targeting, and a dry-run preview, it ensures precise changes with minimal effort. 
+
 The real-time option employs a advanced word masking technique to search and replace text, url ( anything ), leaving no trace behind. The find and replace process takes place before the website is 
 rendered in the browser and does not impact any other files or databases. With this ultimate solution, easily find and replace text, HTML code, media/image URLs, footer credits, 
 or any other content within your website without touching the database with the help of an easy-to-use user interface.
 
-On the other hand, the permanent replace ensuring that any replaced text, URL etc is eliminated from your database permanently.
+On the other hand, the **permanent replace** ensuring that any replaced text, URL etc is eliminated from your database permanently.
 The plugin is equipped with powerful features that allow you to visualize the results of search and replace content within your database as well as permanently erasing it. It has the ability to
 search within complex, serialized data structures and replace them with your own words, making it a powerful tool for managing website content for beginners and experienced users alike. 
 Additionally, it allows for the removal or un-setting of any element in serialized data by specifying its key.
+
+Effortlessly **replace images** directly from the preview while ensuring seamless thumbnail regeneration for consistent visuals. Enjoy a blazing-fast **image replacement** process with enhanced efficiency and precision.
+When replacing an image, you can easily update its alt text, caption, and description, which is beneficial for your SEO.
 
 == Key Features ==
 
@@ -168,9 +173,16 @@ code block in find field*
 5. URLs replacement in Database
 6. Media replacement in Database
 7. Dry run report
-7. List of All Masking Rules with pro features 
+8. List of All Masking Rules with pro features 
+9. Media replacer
+10. Media replacer
+11. Media replacer
 
 == Changelog ==
+
+= Version: 1.6.7 ( January 19, 2025 ) =
+* **New:** <a href="https://docs.codesolz.net/better-find-and-replace/real-time-find-replace/media-replacer/">Visual Media Replacer:</a> Effortlessly update images with seamless precision! 
+* **Update:** JS script has been modernize for latest browsers
 
 = Version: 1.6.6 ( January 07, 2025 ) =
 * **Update:** Small JS issue fixed

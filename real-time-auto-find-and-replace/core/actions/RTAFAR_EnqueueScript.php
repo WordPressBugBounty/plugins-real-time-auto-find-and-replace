@@ -61,6 +61,7 @@ class RTAFAR_EnqueueScript {
 					),
 					admin_url()
 				),
+				'pimg' => CS_RTAFAR_PLUGIN_ASSET_URI . 'img/img-placeholder-250x207.svg'
 			)
 		);
 	}
@@ -72,13 +73,13 @@ class RTAFAR_EnqueueScript {
 	 */
 	public function rtrarAppRegisterVars() {
 
-		//load scripts on frontend
-		if( ! is_admin() ) {
+		// load scripts on frontend
+		if ( ! is_admin() ) {
 			wp_enqueue_script( 'rtrar.appLocal', CS_RTAFAR_PLUGIN_ASSET_URI . 'js/rtafar.local.js', array(), CS_RTAFAR_VERSION, true );
-	
+
 			// get jquery / ajax replace rule
 			$rules = Masking::get_rules( 'all', '', 'ajaxContent' );
-	
+
 			// register custom data
 			wp_localize_script(
 				'rtrar.appLocal',
@@ -95,8 +96,8 @@ class RTAFAR_EnqueueScript {
 	 */
 	public function rtrarAppEnqueueScripts() {
 		if ( ! ProActions::hasPro() ) {
-			//load scripts on frontend
-			if( ! is_admin() ) {
+			// load scripts on frontend
+			if ( ! is_admin() ) {
 				wp_enqueue_script( 'rtrar.app', CS_RTAFAR_PLUGIN_ASSET_URI . 'js/rtafar.app.min.js', array(), CS_RTAFAR_VERSION, true );
 			}
 		}

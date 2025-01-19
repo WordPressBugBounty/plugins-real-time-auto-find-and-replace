@@ -1,7 +1,7 @@
 <?php namespace RealTimeAutoFindReplace\admin\options\pages;
 
 /**
- * Class: Add New Coin
+ * Class: Access Denied
  *
  * @package Admin
  * @since 1.2.4

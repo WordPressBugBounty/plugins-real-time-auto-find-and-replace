@@ -90,23 +90,23 @@ class ScOptnReplaceInDb {
 			</p>
 			<ul>
 				<li>
-					<?php 
+					<?php
 						// Translators: %1$s and %2$s are HTML <strong> tags for emphasis.
-						printf( esc_html__( '%1$s Where to Replace %2$s allows to specify where you want to search and replace. ', 'real-time-auto-find-and-replace' ), '<strong>', '</strong>' ); 
+						printf( esc_html__( '%1$s Where to Replace %2$s allows to specify where you want to search and replace. ', 'real-time-auto-find-and-replace' ), '<strong>', '</strong>' );
 					?>
 				</li>
 				<li>
-					<?php 
+					<?php
 						// Translators: %1$s and %2$s are HTML <strong> tags for emphasis.
-						printf( esc_html__( '%1$s Dry Run %2$s allows to create a visual report of the items you have searched for or if its unchecked, the searched item will be replaced if its found. ', 'real-time-auto-find-and-replace' ), '<strong>', '</strong>' ); 
+						printf( esc_html__( '%1$s Dry Run %2$s allows to create a visual report of the items you have searched for or if its unchecked, the searched item will be replaced if its found. ', 'real-time-auto-find-and-replace' ), '<strong>', '</strong>' );
 					?>
 				</li>
 			</ul>
 			
 			<p>
-				<?php 
+				<?php
 					// Translators: %1$s and %2$s are HTML <strong> tags for emphasis; %3$s and %4$s are HTML <a> tags for a link.
-					printf( esc_html__( '%1$s Tutorial %2$s : To read more about the features,  %3$scheck plugin\'s documentation%4$s from our website', 'real-time-auto-find-and-replace' ), '<strong>', '</strong>', '<a href="https://docs.codesolz.net/better-find-and-replace/" target="_blank">', '</a>' ); 
+					printf( esc_html__( '%1$s Tutorial %2$s : To read more about the features,  %3$scheck plugin\'s documentation%4$s from our website', 'real-time-auto-find-and-replace' ), '<strong>', '</strong>', '<a href="https://docs.codesolz.net/better-find-and-replace/" target="_blank">', '</a>' );
 				?>
 			</p>
 		<?php

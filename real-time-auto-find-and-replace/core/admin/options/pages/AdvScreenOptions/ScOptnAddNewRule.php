@@ -54,7 +54,7 @@ class ScOptnAddNewRule {
 				'content' =>
 					'<h2>' . __( 'Found a bug?', 'real-time-auto-find-and-replace' ) . '</h2>' .
 					/* translators: 1: GitHub issues URL 2: GitHub contribution guide URL 3: System status report URL */
-					'<p>' . sprintf( __('If you have discovered a bug or issue with the plugin, we wouldd appreciate your help in improving it. You can create a ticket via GitHub Issues to report the problem, and we will look into it as soon as possible. Please include any relevant details or steps to reproduce the issue here: <a href="%1$s" target="_blank">GitHub Issues</a>.Thank you for your support!', 'real-time-auto-find-and-replace' ), 'https://github.com/CodeSolz/Better-Find-and-Replace/issues?state=open' ) . '</p>' .
+					'<p>' . sprintf( __( 'If you have discovered a bug or issue with the plugin, we wouldd appreciate your help in improving it. You can create a ticket via GitHub Issues to report the problem, and we will look into it as soon as possible. Please include any relevant details or steps to reproduce the issue here: <a href="%1$s" target="_blank">GitHub Issues</a>.Thank you for your support!', 'real-time-auto-find-and-replace' ), 'https://github.com/CodeSolz/Better-Find-and-Replace/issues?state=open' ) . '</p>' .
 					'<p><a target="_blank" href="https://github.com/CodeSolz/Better-Find-and-Replace/issues/new?assignees=&labels=&template=1-bug-report.yml" class="button button-primary">' . __( 'Report a bug', 'real-time-auto-find-and-replace' ) . '</a></p>',
 
 			)
@@ -67,8 +67,7 @@ class ScOptnAddNewRule {
 			'<p><a href="https://github.com/CodeSolz/Better-Find-and-Replace" target="_blank">' . __( 'GitHub project', 'real-time-auto-find-and-replace' ) . '</a></p>' .
 			'<p><a href="https://wordpress.org/plugins/real-time-auto-find-and-replace/#developers" target="_blank">' . __( 'Changelog', 'real-time-auto-find-and-replace' ) . '</a></p>' .
 			'<p><a href="https://docs.codesolz.net/better-find-and-replace/" target="_blank">' . __( 'Documentation', 'real-time-auto-find-and-replace' ) . '</a></p>' .
-			'<p><a href="https://codesolz-plugins.dev/wp-admin/plugin-install.php?s=codesolz&tab=search&type=author" target="_blank">' . __( 'Useful Free Plugins', 'real-time-auto-find-and-replace' ) . '</a></p>' 
-		);	
+			'<p><a href="https://codesolz-plugins.dev/wp-admin/plugin-install.php?s=codesolz&tab=search&type=author" target="_blank">' . __( 'Useful Free Plugins', 'real-time-auto-find-and-replace' ) . '</a></p>'
+		);
 	}
-	
 }

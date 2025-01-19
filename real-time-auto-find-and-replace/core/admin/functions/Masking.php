@@ -3,7 +3,7 @@
 /**
  * Masking Class
  *
- * @package Funcitons
+ * @package Function
  * @since 1.0.0
  * @author M.Tuhin <info@codesolz.net>
  */
@@ -50,7 +50,7 @@ class Masking {
 				'status'       => true,
 				'title'        => __( 'Success!', 'real-time-auto-find-and-replace' ),
 				/* translators: %s: action type */
-				'text'         => sprintf( __( "Thank you! replacement rule %s successfully.", 'real-time-auto-find-and-replace' ), $msg ),
+				'text'         => sprintf( __( 'Thank you! replacement rule %s successfully.', 'real-time-auto-find-and-replace' ), $msg ),
 				'redirect_url' => admin_url( 'admin.php?page=cs-all-masking-rules' ),
 			)
 		);

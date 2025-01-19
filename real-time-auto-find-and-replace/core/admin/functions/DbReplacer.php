@@ -792,9 +792,9 @@ class DbReplacer {
 			$temp = array();
 
 			$args['str'] = Util::check_evil_script( $args['str'] );
-			$uStr = \json_decode($args['str'], true);
+			$uStr        = \json_decode( $args['str'], true );
 
-			if (\json_last_error() === JSON_ERROR_NONE) {
+			if ( \json_last_error() === JSON_ERROR_NONE ) {
 				$temp['is_serialized'] = true;
 				$temp['str']           = $uStr;
 
@@ -898,8 +898,8 @@ class DbReplacer {
 		}
 
 		if ( $args['is_serialized'] && ! is_serialized( $args['str'] ) ) {
-			$args['str'] = \json_encode($args['str']);
-			$args['cleanStr'] = \json_encode($args['cleanStr']);
+			$args['str']      = \json_encode( $args['str'] );
+			$args['cleanStr'] = \json_encode( $args['cleanStr'] );
 		}
 
 		return $args;

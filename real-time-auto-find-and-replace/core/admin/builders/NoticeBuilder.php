@@ -47,17 +47,17 @@ class NoticeBuilder {
 	 * @return void
 	 */
 	public function action_admin_init() {
-		if ( isset($_GET[ CS_NOTICE_ID ]) ) {
+		if ( isset( $_GET[ CS_NOTICE_ID ] ) ) {
 			$dismiss_option = filter_input( INPUT_GET, CS_NOTICE_ID, FILTER_SANITIZE_FULL_SPECIAL_CHARS );
 
-			if( empty($dismiss_option)){
+			if ( empty( $dismiss_option ) ) {
 				return false;
 			}
 
 			update_option( CS_NOTICE_ID . 'ed_' . $dismiss_option, true );
 			return wp_send_json(
 				array(
-					'status' => 'success' 
+					'status' => 'success',
 				)
 			);
 		}
@@ -96,7 +96,7 @@ class NoticeBuilder {
 					$canDissmiss = '';
 					if ( $admin_notice->dismiss_option ) {
 						$canDissmiss = ' is-dismissible';
-						$dissmissUrl = ' data-dismiss-url=' . esc_url( $dismiss_url ) ;
+						$dissmissUrl = ' data-dismiss-url=' . esc_url( $dismiss_url );
 					}
 
 					?><div class="notice cs-notice notice-<?php echo \esc_attr( $type . $canDissmiss ); ?>" <?php echo \esc_attr( $dissmissUrl ); ?>>

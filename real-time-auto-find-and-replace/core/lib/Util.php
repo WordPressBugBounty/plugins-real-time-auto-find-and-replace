@@ -404,7 +404,7 @@ class Util {
 			),
 			'input'    => array(
 				'class'             => array(),
-				'type'              => array( "checkbox"),
+				'type'              => array( 'checkbox' ),
 				'required'          => array(),
 				'placeholder'       => array(),
 				'name'              => array(),

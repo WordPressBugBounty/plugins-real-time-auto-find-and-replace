@@ -105,7 +105,7 @@ class AllMaskingRulesList extends \WP_List_Table {
 			return __( 'Plain Text', 'real-time-auto-find-and-replace' );
 		} elseif ( $item->type == 'regex' ) {
 			return sprintf(
-				/* translators: %1$s: opening <span> tag with a class, %2$s: closing </span> tag */ 
+				/* translators: %1$s: opening <span> tag with a class, %2$s: closing </span> tag */
 				__( 'Regular Expression %1$s Managed %2$s ', 'real-time-auto-find-and-replace' ),
 				'<br><span class="dt-col-sm-des">',
 				'</span>'

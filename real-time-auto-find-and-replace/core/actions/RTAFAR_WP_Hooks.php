@@ -44,6 +44,8 @@ class RTAFAR_WP_Hooks {
 		add_action( 'init', array( $this, 'rtafar_role_caps' ), 11 );
 		add_filter( 'ure_capabilities_groups_tree', array( $this, 'rtafar_ure_capabilities' ), 15 );
 		add_filter( 'ure_custom_capability_groups', array( $this, 'rtafar_ure_custom_capability_groups' ), 15, 2 );
+
+		/*** Media Replacer */
 	}
 
 

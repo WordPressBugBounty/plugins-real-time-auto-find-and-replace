@@ -79,6 +79,4 @@ class ScOptnAllMaskRules {
 
 		return false;
 	}
-
-
 }

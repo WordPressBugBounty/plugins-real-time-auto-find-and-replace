@@ -24,9 +24,6 @@ class Scripts_Settings {
 
 		$rtafr_menu = apply_filters( 'rtafar_menu_scripts', $rtafr_menu );
 
-		// wp_enqueue_style( 'sweetalert', CS_RTAFAR_PLUGIN_ASSET_URI . 'plugins/sweetalert/dist/sweetalert.css', array(), CS_RTAFAR_VERSION );
-		// wp_enqueue_script( 'sweetalert', CS_RTAFAR_PLUGIN_ASSET_URI . 'plugins/sweetalert/dist/sweetalert.min.js', array(), CS_RTAFAR_VERSION, true );
-
 		if ( ( isset( $rtafr_menu['add_masking_rule'] ) && $page_id === $rtafr_menu['add_masking_rule'] ) ||
 				( isset( $rtafr_menu['replace_in_db'] ) && $page_id === $rtafr_menu['replace_in_db'] )
 			) {
@@ -77,6 +74,21 @@ class Scripts_Settings {
 				wp_enqueue_script(
 					'rtafar.app.admin.min',
 					CS_RTAFAR_PLUGIN_ASSET_URI . 'js/rtafar.app.admin.min.js',
+					array(),
+					CS_RTAFAR_VERSION,
+					true
+				);
+		}
+
+
+		if ( ( isset( $rtafr_menu['media_replacer'] ) && $page_id == $rtafr_menu['media_replacer'] ) 
+			) {
+				// Enqueue WordPress Media Uploader
+				wp_enqueue_media();
+				
+				wp_enqueue_script(
+					'rtafar.media.replacer.min',
+					CS_RTAFAR_PLUGIN_ASSET_URI . 'js/rtafar.media.replacer.min.js',
 					array(),
 					CS_RTAFAR_VERSION,
 					true

@@ -88,12 +88,19 @@ class AdminPageBuilder {
 
 		$content .= isset( $argc['content'] ) ? $argc['content'] : '----';
 		$content .= isset( $argc['hidden_content'] ) ? $argc['hidden_content'] : '';
+		$content .= \wp_nonce_field( SECURE_AUTH_SALT, 'cs_token' );
+
+		$before_footer = isset( $argc['before_footer'] ) ? $argc['before_footer'] : '';
+		if( isset($argc['before_footer_wrapper']) && true === $argc['before_footer_wrapper'] ){
+			$before_footer = '<div class="panel-body bg-white no-bottom-margin">' . $before_footer .'</div>';
+		}
 
 		return sprintf(
 			$this->page_wrapper( $argc ),
 			$this->generate_header( $argc ),
 			$content,
 			$this->generate_button_block( $argc ),
+			$before_footer,
 			$this->generate_footer()
 		);
 	}
@@ -116,12 +123,16 @@ class AdminPageBuilder {
 		return "<div class=\"wrap\"> 
         <div id=\"product_binder\">
         <div class=\"panel\"> %s 
-        {$form_start}
+		{$form_start}
         <div class=\"panel-body bg-white {$body_class}\">
-        <div class=\"container\"> %s 
-        </div></div> %s %s
-        {$form_end}
-		</div></div></div>";
+        <div class=\"container\"> 
+			%s 
+		</div>
+		</div> %s 
+		{$form_end}
+		%s %s
+		</div>
+		</div></div>";
 	}
 
 	/**
@@ -155,7 +166,7 @@ class AdminPageBuilder {
 		$hidden_fields = isset( $argc['hidden_fields'] ) ? $argc['hidden_fields'] : '';
 		return '<div class="section-submit-button">
             ' . $hidden_fields . '
-            ' . \wp_nonce_field( SECURE_AUTH_SALT, 'cs_token' ) . '
+            
             ' . $prepend_btn . '
             <input type="submit" class="btn btn-custom-submit" value="' . $btn_text . '" />
         </div>';

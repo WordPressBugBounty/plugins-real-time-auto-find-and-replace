@@ -12,10 +12,10 @@ if ( ! defined( 'CS_RTAFAR_VERSION' ) ) {
 	die();
 }
 
+use RealTimeAutoFindReplace\lib\Util;
 use RealTimeAutoFindReplace\admin\functions\Masking;
 use RealTimeAutoFindReplace\admin\options\Scripts_Settings;
 use RealTimeAutoFindReplace\admin\builders\AdminPageBuilder;
-use RealTimeAutoFindReplace\lib\Util;
 
 
 class RTAFAR_RegisterMenu {
@@ -113,10 +113,19 @@ class RTAFAR_RegisterMenu {
 			array( $this, 'rtafr_page_replace_in_db' )
 		);
 
+		$this->rtafr_menus['media_replacer'] = add_submenu_page(
+			CS_RTAFAR_PLUGIN_IDENTIFIER,
+			__( 'Media Replacer', 'real-time-auto-find-and-replace' ),
+			__( 'Media Replacer', 'real-time-auto-find-and-replace' ),
+			'read',
+			'cs-bfar-media-replacer',
+			array( $this, 'rtafar_page_media_replacer' )
+		);
+
 		$this->rtafr_menus['restore_in_db_pro'] = add_submenu_page(
 			CS_RTAFAR_PLUGIN_IDENTIFIER,
 			__( 'Restore Database', 'real-time-auto-find-and-replace' ),
-			__( 'Restore in Database', 'real-time-auto-find-and-replace' ),
+			__( 'Restore', 'real-time-auto-find-and-replace' ),
 			'read',
 			'cs-bfar-restore-database-pro',
 			array( $this, 'rtafar_page_restore_db' )
@@ -136,6 +145,7 @@ class RTAFAR_RegisterMenu {
 		add_action( "load-{$this->rtafr_menus['all_masking_rules']}", array( $this, 'rtafr_register_admin_settings_scripts' ) );
 		add_action( "load-{$this->rtafr_menus['replace_in_db']}", array( $this, 'rtafr_register_admin_settings_scripts' ) );
 		add_action( "load-{$this->rtafr_menus['restore_in_db_pro']}", array( $this, 'rtafr_register_admin_settings_scripts' ) );
+		add_action( "load-{$this->rtafr_menus['media_replacer']}", array( $this, 'rtafr_register_admin_settings_scripts' ) );
 
 		\remove_submenu_page( CS_RTAFAR_PLUGIN_IDENTIFIER, CS_RTAFAR_PLUGIN_IDENTIFIER );
 
@@ -160,9 +170,9 @@ class RTAFAR_RegisterMenu {
 		}
 
 		$page_info = array(
-			/* translators: %s: Page title */
+			/* Translators: %s: is the Page title */
 			'title'     => sprintf( __( '%s Rule', 'real-time-auto-find-and-replace' ), $title ),
-			'sub_title' => __( 'The real-time masking find and replace rules will be applied prior to the website being rendered in the browser. Additionally, the database masking will take effect in the database.', 'real-time-auto-find-and-replace' ),
+			'sub_title' => __( 'The real-time masking find and replace rules will be applied prior to the website being rendered in the browser. Additionally, the database replacement rules will take effect in the database.', 'real-time-auto-find-and-replace' ),
 		);
 
 		if ( current_user_can( 'manage_options' ) || current_user_can( 'administrator' ) || current_user_can( self::$nav_cap['add_masking_rule'] ) ) {
@@ -258,6 +268,37 @@ class RTAFAR_RegisterMenu {
 		}
 	}
 
+
+	/**
+	 * Restore DB
+	 *
+	 * @return void
+	 */
+	public function rtafar_page_media_replacer() {
+		$page_info = array(
+			'title'     => __( 'Media Replacer', 'real-time-auto-find-and-replace' ),
+			'sub_title' => __( 'Search for specific media files by name and easily replace them with new uploads', 'real-time-auto-find-and-replace' ),
+		);
+
+		if ( current_user_can( 'manage_options' ) || current_user_can( 'administrator' ) || current_user_can( self::$nav_cap['restore_in_db'] ) ) {
+			
+			$MediaReplacer = $this->pages->MediaReplacer();
+			if ( \is_object( $MediaReplacer ) ) {
+				echo $MediaReplacer->generate_page( array_merge_recursive( $page_info, array( 'default_settings' => array() ) ) );
+			} else {
+				echo $MediaReplacer, Util::cs_allowed_html();
+			}
+
+		} else {
+			$AccessDenied = $this->pages->AccessDenied();
+			if ( \is_object( $AccessDenied ) ) {
+				echo $AccessDenied->generate_access_denided( array_merge_recursive( $page_info, array( 'default_settings' => array() ) ) );
+			} else {
+				echo $AccessDenied, Util::cs_allowed_html();
+			}
+		}
+	}
+
 	/**
 	 * generate instance
 	 *
@@ -328,3 +369,4 @@ class RTAFAR_RegisterMenu {
 		}
 	}
 }
+
