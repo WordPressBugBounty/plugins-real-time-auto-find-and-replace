@@ -46,14 +46,11 @@ class RTAFAR_RegisterMenu {
 	 */
 	public $rtafr_menus;
 
-
-	public static $nav_cap = array(
-		'add_masking_rule'  => 'bfar_menu_add_new_rule',
-		'all_masking_rules' => 'bfar_menu_all_replacement_rules',
-		'replace_in_db'     => 'bfar_menu_replace_in_database',
-		'restore_in_db'     => 'bfar_menu_restore_in_database',
-	);
-
+	/**
+	 * Instance of the class
+	 *
+	 * @var [type]
+	 */
 	private static $_instance;
 
 	public function __construct() {
@@ -175,7 +172,7 @@ class RTAFAR_RegisterMenu {
 			'sub_title' => __( 'The real-time masking find and replace rules will be applied prior to the website being rendered in the browser. Additionally, the database replacement rules will take effect in the database.', 'real-time-auto-find-and-replace' ),
 		);
 
-		if ( current_user_can( 'manage_options' ) || current_user_can( 'administrator' ) || current_user_can( self::$nav_cap['add_masking_rule'] ) ) {
+		if ( current_user_can( 'manage_options' ) || current_user_can( 'administrator' ) || current_user_can( Util::bfar_nav_cap('add_masking_rule') ) ) {
 			$AddNewRule = $this->pages->AddNewRule();
 			if ( is_object( $AddNewRule ) ) {
 				echo $AddNewRule->generate_page( array_merge_recursive( $page_info, array( 'default_settings' => array() ) ), $option );
@@ -198,7 +195,7 @@ class RTAFAR_RegisterMenu {
 			'sub_title' => __( 'The real-time find and replace rules will be executed before the website is displayed in the browser. The database replacement will take effect in the database permanently.', 'real-time-auto-find-and-replace' ),
 		);
 
-		if ( current_user_can( 'manage_options' ) || current_user_can( 'administrator' ) || current_user_can( self::$nav_cap['all_masking_rules'] ) ) {
+		if ( current_user_can( 'manage_options' ) || current_user_can( 'administrator' ) || current_user_can( Util::bfar_nav_cap('all_masking_rules') ) ) {
 			$AllMaskingRules = $this->pages->AllMaskingRules();
 			if ( is_object( $AllMaskingRules ) ) {
 				echo $AllMaskingRules->generate_page( array_merge_recursive( $page_info, array( 'default_settings' => array() ) ) );
@@ -226,7 +223,7 @@ class RTAFAR_RegisterMenu {
 			'sub_title' => __( 'Effortlessly and permanently replace strings in database tables instantly.', 'real-time-auto-find-and-replace' ),
 		);
 
-		if ( current_user_can( 'manage_options' ) || current_user_can( 'administrator' ) || current_user_can( self::$nav_cap['replace_in_db'] ) ) {
+		if ( current_user_can( 'manage_options' ) || current_user_can( 'administrator' ) || current_user_can( Util::bfar_nav_cap('replace_in_db') ) ) {
 			$Default_Settings = $this->pages->ReplaceInDB();
 			if ( is_object( $Default_Settings ) ) {
 				echo $Default_Settings->generate_default_settings( array_merge_recursive( $page_info, array( 'default_settings' => array() ) ) );
@@ -254,7 +251,7 @@ class RTAFAR_RegisterMenu {
 			'sub_title' => __( 'You can restore data to database what you have replaced', 'real-time-auto-find-and-replace' ),
 		);
 
-		if ( current_user_can( 'manage_options' ) || current_user_can( 'administrator' ) || current_user_can( self::$nav_cap['restore_in_db'] ) ) {
+		if ( current_user_can( 'manage_options' ) || current_user_can( 'administrator' ) || current_user_can( Util::bfar_nav_cap('restore_in_db') ) ) {
 			?>
 				<img src="<?php echo \esc_html( CS_RTAFAR_PLUGIN_ASSET_URI ); ?>img/restore-db-pro.png" style="width: 99%" />
 			<?php
@@ -280,7 +277,7 @@ class RTAFAR_RegisterMenu {
 			'sub_title' => __( 'Search for specific media files by name and easily replace them with new uploads', 'real-time-auto-find-and-replace' ),
 		);
 
-		if ( current_user_can( 'manage_options' ) || current_user_can( 'administrator' ) || current_user_can( self::$nav_cap['restore_in_db'] ) ) {
+		if ( current_user_can( 'manage_options' ) || current_user_can( 'administrator' ) || current_user_can( Util::bfar_nav_cap('restore_in_db') ) ) {
 			
 			$MediaReplacer = $this->pages->MediaReplacer();
 			if ( \is_object( $MediaReplacer ) ) {

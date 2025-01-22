@@ -510,4 +510,20 @@ class Util {
 			),
 		);
 	}
+
+	/**
+	 * Nav Caps
+	 *
+	 * @return String or array
+	 */
+	public static function bfar_nav_cap( $cap_key = ""  ){
+		$nav_caps = \apply_filters( "bfrp_nav_caps", array(
+			'add_masking_rule'  => 'bfar_menu_add_new_rule',
+			'all_masking_rules' => 'bfar_menu_all_replacement_rules',
+			'replace_in_db'     => 'bfar_menu_replace_in_database',
+			'restore_in_db'     => 'bfar_menu_restore_in_database',
+		));
+
+		return !empty( $cap_key ) && isset( $nav_caps[$cap_key] ) ? $nav_caps[$cap_key] : $nav_caps;
+	}
 }

@@ -28,7 +28,7 @@ class RTAFAR_CustomAjax {
 	 */
 	public function rtafar_ajax() {
 
-		if ( ! isset( $_REQUEST['cs_token'] ) || false === check_ajax_referer( SECURE_AUTH_SALT, 'cs_token', false ) ) {
+		if ( ! isset( $_REQUEST['cs_token'] ) || false === check_ajax_referer( SECURE_AUTH_SALT, 'cs_token', false )  ) {
 			wp_send_json(
 				array(
 					'status' => false,
@@ -41,10 +41,13 @@ class RTAFAR_CustomAjax {
 		if ( ! isset( $_REQUEST['data'] ) && isset( $_POST['method'] ) ) {
 			$data = $_POST;
 		} else {
-			$data = $_REQUEST['data'];
+			$data = isset($_REQUEST['data']) ? $_REQUEST['data'] : '';
 		}
 
-		if ( empty( $method = $data['method'] ) || strpos( $method, '@' ) === false ) {
+		//get methods
+		$method = isset( $data['method'] ) ? $data['method'] : ( isset( $_REQUEST['method'] ) ? $_REQUEST['method'] : '' );
+
+		if ( empty( $method ) || strpos( $method, '@' ) === false ) {
 			wp_send_json(
 				array(
 					'status' => false,
@@ -53,9 +56,9 @@ class RTAFAR_CustomAjax {
 				)
 			);
 		}
-		$method     = explode( '@', $method );
-		$class_path = str_replace( '\\\\', '\\', '\\RealTimeAutoFindReplace\\' . $method[0] );
-		if ( ! class_exists( $class_path ) ) {
+		$method     = \explode( '@', $method );
+		$class_path = \str_replace( '\\\\', '\\', '\\RealTimeAutoFindReplace\\' . $method[0] );
+		if ( ! \class_exists( $class_path ) ) {
 			wp_send_json(
 				array(
 					'status' => false,
@@ -66,7 +69,7 @@ class RTAFAR_CustomAjax {
 			);
 		}
 
-		if ( ! method_exists( $class_path, $method[1] ) ) {
+		if ( ! \method_exists( $class_path, $method[1] ) ) {
 			wp_send_json(
 				array(
 					'status' => false,

@@ -72,8 +72,25 @@ class DbReplacer {
 	 * @return void
 	 */
 	public function db_string_replace( $user_query ) {
+		if ( !current_user_can( 'manage_options' ) && !current_user_can( Util::bfar_nav_cap('replace_in_db') ) ) {
+			return wp_send_json(
+				array(
+					'status' => false,
+					'title'  => __( 'Access Denied', 'real-time-auto-find-and-replace' ),
+                'text'   => __( 'You do not have permission to perform this action.', 'real-time-auto-find-and-replace' ),
+				)
+			);
+        }
 
-		// pre_print( $user_query );
+		if( empty( $user_query) || ! \is_array($user_query) ){
+			return wp_send_json(
+				array(
+					'status' => false,
+					'title'  => __( 'Error!', 'real-time-auto-find-and-replace' ),
+					'text'   => __( 'Unable to get the request data. Send data in proper format!', 'real-time-auto-find-and-replace' ),
+				)
+			);
+		}
 
 		$userInput = Util::check_evil_script( $user_query['cs_db_string_replace'] );
 		if ( ! isset( $userInput['find'] ) ||

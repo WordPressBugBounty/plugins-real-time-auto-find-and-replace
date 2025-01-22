@@ -35,6 +35,17 @@ class MediaImageReplacer{
      * @return void Outputs a JSON response with success or error details.
      */
     public function handleMediaReplace( $user_input ){
+
+        if ( !current_user_can( 'manage_options' ) && !current_user_can( Util::bfar_nav_cap('add_masking_rule') ) ) {
+			return wp_send_json(
+				array(
+					'status' => false,
+					'title'  => __( 'Access Denied', 'real-time-auto-find-and-replace' ),
+                'text'   => __( 'You do not have permission to perform this action.', 'real-time-auto-find-and-replace' ),
+				)
+			);
+        }
+
         if (isset($user_input['attachment_id']) && isset($_FILES['media_file']) && $_FILES['media_file']['error'] === UPLOAD_ERR_OK) {
             $attachment_id = absint($user_input['attachment_id']); // Get the attachment ID
 

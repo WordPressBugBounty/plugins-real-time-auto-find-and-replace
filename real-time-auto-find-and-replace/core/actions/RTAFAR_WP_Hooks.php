@@ -224,7 +224,8 @@ class RTAFAR_WP_Hooks {
 	 */
 	public function rtafar_role_caps() {
 		$role = \get_role( 'administrator' );
-		$caps = RTAFAR_RegisterMenu::$nav_cap;
+		// $caps = RTAFAR_RegisterMenu::$nav_cap;
+		$caps = Util::bfar_nav_cap();
 		if ( $caps ) {
 			foreach ( $caps as $cap ) {
 				$role->add_cap( $cap, true );
@@ -256,7 +257,8 @@ class RTAFAR_WP_Hooks {
 	 * @return void
 	 */
 	public function rtafar_ure_custom_capability_groups( $groups, $cap_id ) {
-		$caps = RTAFAR_RegisterMenu::$nav_cap;
+		// $caps = RTAFAR_RegisterMenu::$nav_cap;
+		$caps = Util::bfar_nav_cap();
 		if ( $caps && \is_array( $caps ) && \in_array( $cap_id, $caps ) ) {
 			$groups = array( 'custom', 'better_find_and_replace', 'better_find_and_replace_core' );
 		}
