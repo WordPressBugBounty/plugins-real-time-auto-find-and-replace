@@ -48,6 +48,8 @@ class MediaReplacer {
 	 */
 	public function generate_page( $args ) {
 
+		$option = array();
+
 		$fields = array(
 			'cs_masking_rule[media_replacer]'                  => array(
 				'title'       => __( 'Search Media by Name', 'real-time-auto-find-and-replace' ),

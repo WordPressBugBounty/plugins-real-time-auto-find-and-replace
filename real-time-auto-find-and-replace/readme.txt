@@ -4,7 +4,7 @@ Tags: database, search replace, search, replace, search and replace, real-time r
 Donate link: https://codesolz.net/our-products/wordpress-plugin/real-time-auto-find-and-replace/?utm_source=wordpress.org&utm_medium=README_DONATE_BTN
 Requires at least: 4.0
 Tested up to: 6.7
-Stable tag: 1.6.8
+Stable tag: 1.6.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -179,6 +179,9 @@ code block in find field*
 11. Media replacer
 
 == Changelog ==
+
+= Version: 1.6.9 ( January 30, 2025 ) =
+* **Update:** Small issue fixed
 
 = Version: 1.6.8 ( January 22, 2025 ) =
 * **Update:** Security patch updated
