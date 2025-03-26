@@ -1,14 +1,14 @@
 === Better Find and Replace ===
-Contributors: CodeSolz, m.tuhin
-Tags: database, search replace, search, replace, search and replace, real-time replace, find, find and replace, gutenberg, block-editor, search replace elementor 
+Contributors: codesolz, m.tuhin
+Tags: database, search replace, search, replace, search and replace, real-time replace, find, find and replace 
 Donate link: https://codesolz.net/our-products/wordpress-plugin/real-time-auto-find-and-replace/?utm_source=wordpress.org&utm_medium=README_DONATE_BTN
 Requires at least: 4.0
 Tested up to: 6.7
-Stable tag: 1.6.9
+Stable tag: 1.7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Easily Search and replace text, code blocks, URLs, footer credits, jQuery / Ajax loaded text or anything in real-time. Search replace in database too..
+Search and replace text, code blocks, URLs, media, images, footer credits, jQuery/Ajax content or anything in real-time & database with advanced filters & a clean UI.
 
 == Description ==
 The plugin provides an optimized search and replace function, providing an effective solution for efficient database management. Additionally, it incorporates a dynamic real-time word / text replacing feature.
@@ -179,6 +179,10 @@ code block in find field*
 11. Media replacer
 
 == Changelog ==
+
+= Version: 1.7.0 ( March 26, 2025 ) =
+* **Update:** Media replacer updated
+* **Update:** Video replacer - media replacer
 
 = Version: 1.6.9 ( January 30, 2025 ) =
 * **Update:** Small issue fixed

@@ -57,7 +57,7 @@ class MediaReplacer {
 				'class'       => 'form-control input-media-replace-query',
 				'required'    => true,
 				'value'       => FormBuilder::get_value( 'media_replacer', $option, '' ),
-				'placeholder' => __( 'Enter image name. Partial or full name can used', 'real-time-auto-find-and-replace' ),
+				'placeholder' => __( 'Enter file name. Partial or full name can used', 'real-time-auto-find-and-replace' ),
 				'desc_tip'    => __( 'Enter the name of the media file you wish to replace in the search box above. Matching results will appear for you to select and replace.', 'real-time-auto-find-and-replace' ),
 			),
 		);
@@ -74,7 +74,7 @@ class MediaReplacer {
 				'wrapper_class' => "search-results st1-wrapper ",
 				'type'          => 'section_title',
 				'title'         => __( 'Search Results...', 'real-time-auto-find-and-replace' ),
-				'desc_tip'      => __( 'The image replacement action cannot be undone!', 'real-time-auto-find-and-replace' ),
+				'desc_tip'      => __( 'The replacement action cannot be undone!', 'real-time-auto-find-and-replace' ),
 			),
 		);
 
@@ -119,31 +119,31 @@ class MediaReplacer {
 		<div class="attachment-media-view landscape">
 			<div class="response"><!--do not remove --></div>
 			<div class="upload-container" id="upload-container">
-				<p>Drag and drop an image here, or <label for="file-input" style="color: #0073aa; cursor: pointer;">browse</label></p>
-				<input type="file" id="file-input" accept="image/*">
+				<p>Drag and drop a file here, or <label for="file-input" style="color: #0073aa; cursor: pointer;">browse</label></p>
+				<input type="file" id="file-input" accept="*/*">
 			</div>
 
 			<h2 class="screen-reader-text">Attachment Preview</h2>
 			<div class="image-placeholder">
-				<div class="image-wrapper">
+				<div class="image-wrapper upload-preview-wrapper">
 
 					<img
 					class="preview-image upload-preview"
-					src="<?php echo CS_RTAFAR_PLUGIN_ASSET_URI . 'img/img-placeholder-250x207.svg'; ?>"
+					src="<?php echo CS_RTAFAR_PLUGIN_ASSET_URI . 'img/new-media-placeholder250x207.svg'; ?>"
 					draggable="false"
-					alt="Image 1"
+					alt="new media preview"
 					/>
 				</div>
 				<div class="arrow-wrapper">
 					<div class="custom-arrow">&rarr;</div>
 				</div>
-				<div class="image-wrapper">
-					<img
+				<div class="image-wrapper old-media-preview-wrapper">
+					<!-- <img
 					class="preview-image preview-image-old"
-					src="<?php echo CS_RTAFAR_PLUGIN_ASSET_URI . 'img/old-img-placeholder250x207.svg'; ?>"
+					src="<?php //echo CS_RTAFAR_PLUGIN_ASSET_URI . 'img/old-media-placeholder250x207.svg'; ?>"
 					draggable="false"
-					alt="Image 2"
-					/>
+					alt="old media preview"
+					/> -->
 				</div>
 			</div>
 
@@ -170,11 +170,15 @@ class MediaReplacer {
 			<div class="settings">
 				
 				
-					<span class="setting alt-text has-description" data-setting="alt">
-						<label for="attachment-details-two-column-alt-text" class="name">Alternative Text</label>
-						<textarea id="attachment-details-two-column-alt-text" aria-describedby="alt-text-description"></textarea>
-					</span>
-				
+				<span class="setting alt-text has-description" data-setting="alt">
+					<label for="attachment-details-two-column-alt-text" class="name">Alternative Text</label>
+					<textarea id="attachment-details-two-column-alt-text" aria-describedby="alt-text-description"></textarea>
+				</span>
+
+				<span class="setting" data-setting="title">
+					<label for="attachment-details-two-column-title" class="name">Title</label>
+					<input type="text" id="attachment-details-two-column-title" value="" style="border: 1px solid #8c8f94" />
+				</span>
 					
 								
 				<span class="setting" data-setting="caption">

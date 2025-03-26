@@ -41,7 +41,7 @@ class MediaImageReplacer{
 				array(
 					'status' => false,
 					'title'  => __( 'Access Denied', 'real-time-auto-find-and-replace' ),
-                'text'   => __( 'You do not have permission to perform this action.', 'real-time-auto-find-and-replace' ),
+                    'text'   => __( 'You do not have permission to perform this action.', 'real-time-auto-find-and-replace' ),
 				)
 			);
         }
@@ -59,7 +59,6 @@ class MediaImageReplacer{
             }
 
             $old_file_path = get_attached_file( $attachment_id, true );
-
             $metadata     = wp_get_attachment_metadata( $attachment_id );
             $backup_sizes = get_post_meta( $attachment_id, '_wp_attachment_backup_sizes', true );
             wp_delete_attachment_files( $attachment_id, $metadata, $backup_sizes, $old_file_path );
@@ -97,12 +96,12 @@ class MediaImageReplacer{
                 $description = sanitize_textarea_field($user_input['description'] ?? '');
                 $title = sanitize_textarea_field($user_input['title'] ?? '');
 
+                // $updated_post = [
+                //     'ID' => $attachment_id,
+                //     'post_excerpt' => $caption, // Caption
+                //     'post_content' => $description, // Description
+                // ];
                 $updated_post = [
-                    'ID' => $attachment_id,
-                    'post_excerpt' => $caption, // Caption
-                    'post_content' => $description, // Description
-                ];
-                $attachment_data = [
                     'ID' => $attachment_id,
                     'post_mime_type' => $upload_result['type'], // Update MIME type
                     'post_title' => empty($title) ? sanitize_file_name(basename($new_file_path)) : $title,
@@ -111,26 +110,30 @@ class MediaImageReplacer{
                 ];
                 wp_update_post($updated_post);
 
-                if (!empty($alt_text)) {
+                // \pre_print(
+                //     $updated_post
+                // );
+
+                if ( !empty( $alt_text ) && wp_attachment_is_image( $attachment_id ) ) {
                     update_post_meta($attachment_id, '_wp_attachment_image_alt', $alt_text);
                 }
 
                 return wp_send_json([
                     'success' => true,
-                    'message' => 'Image replaced successfully. ',
+                    'message' => 'File replaced successfully. ',
                     'new_media_url' => wp_get_attachment_url($attachment_id),
                     'media_id' => $attachment_id
                 ]);
             } else {
                 return wp_send_json([
                     'success' => false,
-                    'message' => 'Failed to replace new image: ' . $upload_result['error']
+                    'message' => 'Failed to replace file: ' . $upload_result['error']
                 ]);
             }
         } else {
             return wp_send_json([
                 'success' => false,
-                'message' => 'Invalid request. Missing attachment ID or image file.'
+                'message' => 'Invalid request. Missing attachment ID or file.'
             ]);
         }
 
