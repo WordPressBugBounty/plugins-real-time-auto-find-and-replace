@@ -4,16 +4,16 @@
  * Plugin Name:       Better Find and Replace
  * Plugin URI:        https://codesolz.net/our-products/wordpress-plugin/real-time-auto-find-and-replace/
  * Description:       The plugin has the capability to automatically search for specific words and replace them with your preferred words. You have the ability to create your own search and replace rules for real-time replacement. These rules will be applied before the page is displayed in the browser, as well as during any background interactions with other social plugins.
- * Version:           1.7.6
+ * Version:           1.7.9
  * Author:            CodeSolz
  * Author URI:        https://www.codesolz.net
  * License:           GPLv3
  * License URI:       https://www.gnu.org/licenses/gpl.txt
  * Domain Path:       /languages
  * Text Domain:       real-time-auto-find-and-replace
- * Requires PHP: 7.0
- * Requires At Least: 4.0
- * Tested Up To: 6.8
+ * Requires PHP: 7.2
+ * Requires At Least: 5.2
+ * Tested Up To: 6.9
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -41,7 +41,7 @@ if ( ! class_exists( 'Real_Time_Auto_Find_And_Replace' ) ) {
 		 *
 		 * @var String
 		 */
-		private static $version = '1.7.6';
+		private static $version = '1.7.8';
 
 		/**
 		 * Hold version
