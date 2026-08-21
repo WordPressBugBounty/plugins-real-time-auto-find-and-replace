@@ -26,87 +26,76 @@ class AboutUs {
 
 	/**
 	 * Plugin showcase data.
-	 * Each entry supports: title, description, icon, icon_class, badge, badge_type,
-	 * features (array), button_label, button_url.
+	 * Each entry supports: title, subtitle, description, icon_file,
+	 * features (array), badge (optional), pro_url, wporg_url.
+	 *
+	 * `icon_file` is the plugin's official WordPress.org icon, bundled under
+	 * assets/img/plugins/ so the card renders without any external request.
+	 *
+	 * `badge` is optional and renders as a small pill beside the plugin name;
+	 * omit it for plugins that are already generally available.
 	 *
 	 * @return array
 	 */
 	private function get_plugins_data() {
 		return array(
+			
 			array(
-				'title'        => 'Advanced AI Content Generator',
-				'description'  => 'Create AI-powered WordPress content faster with smart generation workflows designed to help you draft, refine, and publish more efficiently from your dashboard.',
-				'icon'         => '📝',
-				'icon_class'   => 'rtafar-icon-green',
-				'badge'        => 'AI-Powered',
-				'badge_type'   => 'premium',
-				'features'     => array(
-					'Generate content with AI assistance',
-					'Speed up drafting and publishing workflows',
-					'Built for WordPress content creators',
+				'title'       => 'AI Store Signals for WooCommerce',
+				'description' => 'See how well AI systems can understand your WooCommerce store. Find visibility gaps, improve product data, generate AI-friendly feeds and llms.txt, and track AI bot activity.',
+				'icon_file'   => 'ai-store-signals.png',
+				'subtitle'    => 'Get your products ready for AI shopping',
+				'features'    => array(
+					'Get an AI readiness score for your store',
+					'Find product & schema visibility gaps',
+					'Generate AI-friendly feeds & llms.txt',
 				),
-				'button_label' => 'View Plugin',
-				'button_url'   => 'https://codesolz.net/our-products/wordpress-plugin/advanced-ai-content-generator/?utm_source=plugin-about&utm_medium=wp-admin&utm_campaign=about-page',
+				'pro_url'     => 'https://codesolz.net/our-products/wordpress-plugin/ai-store-signals-for-woocommerce/?utm_source=plugin-about&utm_medium=wp-admin&utm_campaign=about-page',
+				'wporg_url'   => 'https://wordpress.org/plugins/ai-store-signals-for-woocommerce/',
 			),
 			array(
-				'title'        => 'SchemaPilot AI',
-				'description'  => 'Automatically generates, validates, and optimizes schema markup so your WordPress content appears with Google rich results. AI-powered, bulk-ready, WooCommerce compatible.',
-				'icon'         => '🤖',
-				'icon_class'   => 'rtafar-icon-blue',
-				'badge'        => 'AI-Powered',
-				'badge_type'   => 'premium',
-				'features'     => array(
-					'AI-powered schema generation',
-					'Google rich results optimization',
-					'WooCommerce compatible',
+				'title'       => 'AttributeHub for WooCommerce',
+				'description' => 'Clean up confusing supplier and imported attribute values without changing your original product data. Create consistent, customer-friendly filters across your store.',
+				'icon_file'   => 'attributehub.png',
+				'subtitle'    => 'Turn messy product attributes into clean filters',
+				'features'    => array(
+					'Turn codes like BK into Black and WH into White',
+					'Clean imported attributes automatically',
+					'Keep original product data untouched',
 				),
-				'button_label' => 'View Plugin',
-				'button_url'   => 'https://codesolz.net/our-products/wordpress-plugin/schema-pilot-ai-schema-and-knowledge-graph/?utm_source=plugin-about&utm_medium=wp-admin&utm_campaign=about-page',
+				'pro_url'     => 'https://codesolz.net/our-products/wordpress-plugin/attributehub-for-woocommerce/?utm_source=plugin-about&utm_medium=wp-admin&utm_campaign=about-page',
+				'wporg_url'   => 'https://wordpress.org/plugins/attributehub-for-woocommerce/',
 			),
 			array(
-				'title'        => 'Folderlyzer – Smart Media Library Folders',
-				'description'  => 'Organize your WordPress media library with Folderlyzer. Create, sort, and manage folders effortlessly for faster file management.',
-				'icon'         => '📁',
-				'icon_class'   => 'rtafar-icon-purple',
-				'badge'        => 'Free',
-				'badge_type'   => 'free',
-				'features'     => array(
-					'Create & manage nested folders',
-					'Sort media files effortlessly',
-					'Fast, intuitive file management',
+				'title'       => 'Merchant Feed Booster for WooCommerce',
+				'description' => 'Find exactly why your WooCommerce products may be rejected or underperforming on Google Shopping. Audit your catalog, get a health score, and see exactly what needs fixing.',
+				'icon_file'   => 'merchant-feed-booster.png',
+				'subtitle'    => 'Fix Google Shopping feed problems before they cost sales',
+				'features'    => array(
+					'Audit products against 27 feed rules',
+					'Get a 0–100 feed health score',
+					'See exactly what needs fixing',
 				),
-				'button_label' => 'View Plugin',
-				'button_url'   => 'https://codesolz.net/our-products/wordpress-plugin/folderlyzer-smart-media-library-folders/?utm_source=plugin-about&utm_medium=wp-admin&utm_campaign=about-page',
+				// TODO: point at the dedicated product page once it exists on codesolz.net.
+				'pro_url'     => 'https://codesolz.net/our-products/wordpress-plugins/?utm_source=plugin-about&utm_medium=wp-admin&utm_campaign=about-page',
+				'wporg_url'   => 'https://wordpress.org/plugins/merchant-feed-booster-lite-for-woocommerce/',
 			),
 			array(
-				'title'        => 'Ultimate Push Notifications',
-				'description'  => 'Re-engage your audience with powerful web push notifications. Send automated alerts for new posts, WooCommerce order updates, and custom marketing campaigns.',
-				'icon'         => '🔔',
-				'icon_class'   => 'rtafar-icon-orange',
-				'badge'        => 'Premium',
-				'badge_type'   => 'premium',
-				'features'     => array(
-					'Cross-browser push support',
-					'WooCommerce & post triggers',
-					'Subscriber list management',
+				'title'       => 'WatchSpire',
+				'description' => 'Catch silent WordPress failures before they cost you leads or sales. WatchSpire monitors forms, checkout, email delivery, uptime, SSL, and more then alerts you when something goes wrong.',
+				'icon_file'   => 'watchspire.png',
+				'subtitle'    => 'Your WordPress early warning system',
+				'features'    => array(
+					'Catch failed forms & checkout issues',
+					'Know what changed before a failure',
+					'Get alerts before problems cost you leads',
+					'Links failures to the update that caused them',
+					'See which update may have caused a failure'
 				),
-				'button_label' => 'View Plugin',
-				'button_url'   => 'https://codesolz.net/our-products/wordpress-plugin/ultimate-push-notifications/?utm_source=plugin-about&utm_medium=wp-admin&utm_campaign=about-page',
-			),
-			array(
-				'title'        => 'Variation Swatches Adjacent Products for WooCommerce',
-				'description'  => 'Boost your WooCommerce store\'s sales with a visually appealing product gallery that smartly recommends multiple designs of products in the same color.',
-				'icon'         => '🎨',
-				'icon_class'   => 'rtafar-icon-pink',
-				'badge'        => 'Free',
-				'badge_type'   => 'free',
-				'features'     => array(
-					'Color, image & label swatches',
-					'Smart product recommendations',
-					'WooCommerce archive compatible',
-				),
-				'button_label' => 'View Plugin',
-				'button_url'   => 'https://codesolz.net/our-products/wordpress-plugin/variation-swatches-adjacent-products-for-woocommerce/?utm_source=plugin-about&utm_medium=wp-admin&utm_campaign=about-page',
+				'badge'       => 'Coming Soon',
+				'pro_url'     => 'https://codesolz.net/our-products/wordpress-plugin/watchspire/?utm_source=plugin-about&utm_medium=wp-admin&utm_campaign=about-page',
+				// No plugin page yet — point at the WordPress.org search until the listing is live.
+				'wporg_url'   => 'https://wordpress.org/plugins/search/watchspire/',
 			),
 		);
 	}
@@ -255,14 +244,19 @@ class AboutUs {
 				<?php foreach ( $plugins as $plugin ) : ?>
 				<div class="rtafar-plugin-card">
 					<div class="rtafar-card-top">
-						<div class="rtafar-card-icon <?php echo esc_attr( $plugin['icon_class'] ); ?>" aria-hidden="true">
-							<?php echo esc_html( $plugin['icon'] ); ?>
+						<div class="rtafar-card-icon" aria-hidden="true">
+							<img src="<?php echo esc_url( CS_RTAFAR_PLUGIN_ASSET_URI . 'img/plugins/' . $plugin['icon_file'] ); ?>" alt="" width="48" height="48" loading="lazy" />
 						</div>
-						<span class="rtafar-badge <?php echo esc_attr( $plugin['badge_type'] ); ?>">
-							<?php echo esc_html( $plugin['badge'] ); ?>
-						</span>
+						<div class="rtafar-card-heading">
+							<h3 class="rtafar-card-title">
+								<?php echo esc_html( $plugin['title'] ); ?>
+								<?php if ( ! empty( $plugin['badge'] ) ) : ?>
+									<span class="rtafar-badge coming-soon"><?php echo esc_html( $plugin['badge'] ); ?></span>
+								<?php endif; ?>
+							</h3>
+							<span class="rtafar-card-subtitle"><?php echo esc_html( $plugin['subtitle'] ); ?></span>
+						</div>
 					</div>
-					<h3 class="rtafar-card-title"><?php echo esc_html( $plugin['title'] ); ?></h3>
 					<p class="rtafar-card-desc"><?php echo esc_html( $plugin['description'] ); ?></p>
 					<?php if ( ! empty( $plugin['features'] ) ) : ?>
 					<ul class="rtafar-card-features">
@@ -272,8 +266,11 @@ class AboutUs {
 					</ul>
 					<?php endif; ?>
 					<div class="rtafar-card-footer">
-						<a href="<?php echo esc_url( $plugin['button_url'] ); ?>" target="_blank" rel="noopener noreferrer" class="rtafar-btn secondary">
-							<?php echo esc_html( $plugin['button_label'] ); ?> &#8599;
+						<a href="<?php echo esc_url( $plugin['pro_url'] ); ?>" target="_blank" rel="noopener noreferrer" class="rtafar-card-link pro">
+							<?php esc_html_e( 'Learn More', 'real-time-auto-find-and-replace' ); ?>
+						</a>
+						<a href="<?php echo esc_url( $plugin['wporg_url'] ); ?>" target="_blank" rel="noopener noreferrer" class="rtafar-card-link wporg">
+							<?php esc_html_e( 'Get It Free on WordPress.org', 'real-time-auto-find-and-replace' ); ?> &#8599;
 						</a>
 					</div>
 				</div>

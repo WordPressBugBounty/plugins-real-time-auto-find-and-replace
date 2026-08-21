@@ -418,6 +418,19 @@
 	color: #6d28d9;
 }
 
+.rtafar-badge.coming-soon {
+	background: #fef3c7;
+	color: #92400e;
+	font-size: 9.5px;
+	padding: 2px 7px;
+	letter-spacing: 0.4px;
+	text-transform: uppercase;
+	vertical-align: middle;
+	position: relative;
+	top: -1px;
+	margin-left: 6px;
+}
+
 .rtafar-badge.featured-label {
 	background: linear-gradient( 90deg, #2563eb, #7c3aed );
 	color: #fff;
@@ -567,9 +580,24 @@
 
 .rtafar-card-top {
 	display: flex;
-	align-items: flex-start;
-	justify-content: space-between;
+	align-items: center;
+	gap: 12px;
 	margin-bottom: 14px;
+}
+
+.rtafar-card-heading {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 5px;
+	min-width: 0;
+}
+
+.rtafar-card-subtitle {
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 1.35;
+	color: #64748b;
 }
 
 .rtafar-card-icon {
@@ -579,8 +607,18 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	font-size: 22px;
 	flex-shrink: 0;
+	overflow: hidden;
+	background: #f8fafc;
+	border: 1px solid #e8edf4;
+}
+
+.rtafar-card-icon img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	border-radius: inherit;
 }
 
 /* Icon background colors */
@@ -595,8 +633,12 @@
 	font-size: 15px;
 	font-weight: 700;
 	color: #0f172a;
-	margin: 0 0 9px;
-	line-height: 1.35;
+	margin: 0;
+	line-height: 1.3;
+}
+
+.rtafar-about-wrap .rtafar-card-title .rtafar-badge {
+	font-weight: 700;
 }
 
 .rtafar-card-desc {
@@ -631,7 +673,41 @@
 	margin-top: auto;
 	padding-top: 16px;
 	border-top: 1px solid #f1f5f9;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	flex-wrap: wrap;
 }
+
+.rtafar-card-link {
+	font-size: 12.5px;
+	font-weight: 600;
+	line-height: 1.4;
+	text-decoration: none !important;
+	transition: color 0.15s ease;
+}
+
+.rtafar-card-link.pro {
+	color: #7c3aed !important;
+}
+
+.rtafar-card-link.pro:hover {
+	color: #6d28d9 !important;
+	text-decoration: underline !important;
+}
+
+.rtafar-card-link.wporg {
+	color: #2563eb !important;
+	margin-left: auto;
+	text-align: right;
+}
+
+.rtafar-card-link.wporg:hover {
+	color: #1d4ed8 !important;
+	text-decoration: underline !important;
+}
+
 
 /* ================================================================
    TRUST / FOOTER SECTION
@@ -767,5 +843,16 @@
 
 	.rtafar-trust-section {
 		padding: 36px 22px;
+	}
+
+	.rtafar-card-footer {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 8px;
+	}
+
+	.rtafar-card-link.wporg {
+		margin-left: 0;
+		text-align: left;
 	}
 }
